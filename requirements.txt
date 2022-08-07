@@ -1,3 +1,4 @@
+django-sendgrid-webhook
 beautifulsoup4==4.9.3
 bs4==0.0.1
 certifi==2020.6.20

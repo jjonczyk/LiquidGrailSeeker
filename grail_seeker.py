@@ -1,6 +1,7 @@
 import argparse
 import logging
-from typing import Optional, Sequence
+from typing import Optional, Sequence, Dict
+from authentication.authentication import send_email
 from breweries import BreweryBase
 from download_feed import TopList
 from file_config import get_file_path
@@ -19,12 +20,14 @@ class GrailSeeker:
             options: Optional[Sequence[str]] = None,
             rating: Optional[Sequence[float]] = None,
             logger: Optional[Sequence[str]] = None,
+            send_results: Optional[Sequence[bool]] = False
     ) -> None:
 
         self.country = country
         self.options = options
         self.rating = rating
         self.logger = logger
+        self.send_results = send_results
 
     def launch(self):
         # Load configuration
@@ -39,6 +42,21 @@ class GrailSeeker:
         top_feed = top_list.feed
         save_path = get_file_path(self.country, self.options, self.logger)
         save_feed(top_feed, save_path)
+
+        # Send data via email if wanted
+        if self.send_results:
+            message = convert_data_to_message(top_feed)
+            send_email(message)
+
+
+def convert_data_to_message(feed_data: Dict[str]) -> str:
+    message = ''
+    for key, values in feed_data.items():
+        if values:
+            message += f"\n{str(key)}\n"
+            for val in values:
+                message += f"\t{str(val)}\n"
+    return message
 
 
 def parse_arguments():
@@ -64,6 +82,9 @@ def parse_arguments():
                         type=str,
                         default='today',
                         help="Custom file tag or current date [today]")
+    parser.add_argument('-s', '--send_results',
+                        action='store_true',
+                        help="Send results to email address specified in authentication/credentials/config.ini file")
     return parser.parse_args()
 
 
@@ -77,6 +98,6 @@ if __name__ == '__main__':
         logging.info("%s: %r", arg, value)
 
     # Launch the app, default configuration is:
-    # country='poland', options='newest', rating=3.80, logger='today'
-    app = GrailSeeker(args.country, args.options, args.rating, args.logger)
+    # country='poland', options='newest', rating=3.80, logger='today', send_results=False
+    app = GrailSeeker(args.country, args.options, args.rating, args.logger, args.send_results)
     app.launch()

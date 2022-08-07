@@ -5,7 +5,7 @@ from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 import time
 
-from authentication.authentication import authorize
+from authentication.authentication import authorize_untappd
 from constants.constants import (
     BASE_URL,
     BREWERY_EXT,
@@ -59,7 +59,7 @@ class BreweryBase:
     def add_breweries(self):
         if not self.urls:
             self.url_constructor()
-        auth_urls = authorize(self.urls)
+        auth_urls = authorize_untappd(self.urls)
         for url in auth_urls:
             time.sleep(1)
             try:

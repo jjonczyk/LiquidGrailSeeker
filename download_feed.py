@@ -9,7 +9,7 @@ from urllib.error import HTTPError
 import time
 import re
 
-from authentication.authentication import authorize
+from authentication.authentication import authorize_untappd
 from constants.constants import (
     BASE_URL,
     BEER_EXT,
@@ -128,7 +128,7 @@ class TopList:
 
     def download_feed(self):
         urls = self.prepare_urls()
-        urls = authorize(urls)
+        urls = authorize_untappd(urls)
         logging.info("\n\tCOLLECTING DATA: \n")
         for url in tqdm(urls):
             time.sleep(0.5)
