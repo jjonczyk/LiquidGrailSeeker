@@ -16,9 +16,7 @@ This app searches for best fresh craft beer releases and saves you a list to rev
 ### Prepare to use my app:
 1. clone my repo 
 2. install everything from `[GIT_ROOT]/requirements.txt` (if using pip, try: `pip install -r requirements.txt` in your venv)    
-3. save your username to `[GIT_ROOT]/authentication/username.txt`    
-4. save your `client_id` to `[GIT_ROOT]/authentication/client_id.txt`    
-5. save your `client_secret` to `[GIT_ROOT]/authentication/client_secret.txt`    
+3. save your credentials to `[GIT_ROOT]/authentication/credentials/config.ini` file    
 
 ### Usage:
 The base command is `python grail_seeker.py` (launch it in your GIT root directory).    
@@ -29,6 +27,7 @@ However, you can change those arguments on your own:
 - `--options` [**newest**/top_rated] - sorting options
 - `--min_rating` [**3.80**] - Minimal rating in float (out of 5.00) of your wanted feed, above 3.75 you shouldn't be dissapointed
 - `--logger` [**today**] - default is the current date in the dd-mm-yyyy format, but you can specify any name you want
+- `--send_results` [**False**] - by adding this flag you can send your daily feed to your email address
 
 **BOLD** - defaults
 
