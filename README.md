@@ -37,6 +37,6 @@ The daily feed data will be saved in the `[GIT_ROOT]/data/[country]/` directory 
 
 ### Credits
 My program builds the daily feed based on the Untappd data.    
-However, I only use it as a research tool and don't ccreate my own database.   
+However, I only use it as a research tool and do not create my own database.   
     
 ![Optional Text](../main/assets/pbu_80_grey.png)
