@@ -2,7 +2,7 @@
 
 **Author:             Jakub Jonczyk  
 Project made:       17.10.2020**  
-Code updated:       25.08.2021  
+Code updated:       7.08.2022  
 Repository created: 25.08.2021  
 
 ---------------------------------
@@ -10,8 +10,8 @@ Repository created: 25.08.2021
 This app searches for best fresh craft beer releases and saves you a list to review. You can customize it a little bit!
 
 ### Requirements:
-- Untappd account: `https://untappd.com/login`
-- Your personal `client_id` and `client_secret` (please request for an Untappd API key)
+- Untappd account: `https://untappd.com/login` + your personal `client_id` and `client_secret` (please request Untappd for an API key)
+- SendGrid account: `https://signup.sendgrid.com/` + SendGrid API key created + Sender Identity verified
 
 ### Prepare to use my app:
 1. clone my repo 
