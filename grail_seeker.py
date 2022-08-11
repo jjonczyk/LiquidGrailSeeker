@@ -49,11 +49,11 @@ class GrailSeeker:
             send_email(message)
 
 
-def convert_data_to_message(feed_data: Dict[str]) -> str:
+def convert_data_to_message(feed_data: Dict[str, Dict[str, str]]) -> str:
     message = ''
     for key, values in feed_data.items():
         if values:
-            message += f"\n{str(key)}\n"
+            message += f"\n{key}\n"
             for val in values:
                 message += f"\t{str(val)}\n"
     return message
